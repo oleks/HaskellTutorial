@@ -8,7 +8,8 @@ guarding users from foul domain behaviour.
 
 This document presents a couple embedded Haskell DSLs for the
 parsing and interpretation of simple regular, context-free, and
-context-sensitive languages.
+context-sensitive languages. The distinction between these language
+classes will be gradually made clear.
 
 Not all programming langugages allow the "embedding" of other,
 domain-specific languages. This demands that the designer of a
