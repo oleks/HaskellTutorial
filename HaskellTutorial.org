@@ -1,6 +1,8 @@
 #+TITLE: Haskell-Style Parsing and Intepretation
 
-* Haskell Tutorial
+* Haskell-Style Parsing and Interpretation
+
+** Introduction
 
 Haskell is a language full of embedded domain-specific languages. A
 "domain-specific language", or DSL, is a language specialized for a
@@ -21,6 +23,18 @@ and control-flow structures.
 For instance, C++, C#, and Python, all allow advanced operator
 overloading, but none of them permit to modify the behaviour of
 sequencing program statements (in C# and C++, the =;= operator).
+
+Haskell is also a functional programming language; which in this
+case means that it comes with quick and (relatively) painless
+"glue code" for binding seemingly disparate domain-specific code,
+into one cohesive whole, such as the stages of a compiler or
+interpreter.
+
+*** Audience
+
+The principal target audience for this tutorial are [[http://www.diku.dk/][DIKU]] students,
+coming to learn Haskell after having taken an undergraduate course
+on Compiler Implementation.
 
 ** Regular Expressions
 
