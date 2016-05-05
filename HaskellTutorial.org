@@ -13,10 +13,9 @@ parsing and interpretation of simple regular, context-free, and
 context-sensitive languages. The distinction between these language
 classes will be made clear along the way.
 
-Not all programming langugages allow the "embedding" of other,
-domain-specific languages. This demands that the designer of a
-language library can define new, and override existing operators
-and control-flow structures.
+Not all programming langugages allow the "embedding" of domain-specific
+languages. This demands that the designer of a language library can
+define new, and override existing operators and control-flow structures.
 
 For instance, C++, C#, and Python, all allow advanced operator
 overloading, but none of them permit to modify the behaviour of
