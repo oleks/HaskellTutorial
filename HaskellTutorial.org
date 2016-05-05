@@ -25,8 +25,8 @@ Haskell lets you do this.
 Haskell is also a functional programming language; which in this
 case means that it comes with quick and (relatively) painless
 "glue code" for binding seemingly disparate domain-specific code,
-into one cohesive whole, such as the stages of a compiler or
-interpreter.
+into one cohesive whole (e.g., binding the stages of a compiler or
+interpreter).
 
 ** Audience
 
