@@ -18,7 +18,7 @@ and control-flow structures.
 
 For instance, C++, C#, and Python, all allow advanced operator
 overloading, but none of them permit to modify the behaviour of
-sequencing program statements (the =;= operator).
+sequencing program statements (in C# and C++, the =;= operator).
 
 ** Regular Expressions
 
