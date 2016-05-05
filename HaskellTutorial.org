@@ -1,3 +1,5 @@
+#+TITLE: Haskell-Style Parsing and Intepretation
+
 * Haskell Tutorial
 
 Haskell is a language full of embedded domain-specific languages. A
