@@ -1,8 +1,6 @@
 #+TITLE: Haskell-Style Parsing and Intepretation
 
-* Haskell-Style Parsing and Interpretation
-
-** Introduction
+* Introduction
 
 Haskell is a language full of embedded domain-specific languages. A
 "domain-specific language", or DSL, is a language specialized for a
@@ -30,16 +28,16 @@ case means that it comes with quick and (relatively) painless
 into one cohesive whole, such as the stages of a compiler or
 interpreter.
 
-*** Audience
+** Audience
 
 The principal target audience for this tutorial are [[http://www.diku.dk/][DIKU]] students,
 coming to learn Haskell after having taken an undergraduate course
 on Compiler Implementation.
 
-** Regular Expressions
+* Regular Expressions
 
-** Context-Free Grammars
+* Context-Free Grammars
 
-** Context-Sensitive Languages
+* Context-Sensitive Languages
 
-** Interpretation
+* Interpretation
