@@ -20,6 +20,7 @@ define new, and override existing operators and control-flow structures.
 For instance, C++, C#, and Python, all allow advanced operator
 overloading, but none of them permit to modify the behaviour of
 sequencing program statements (in C# and C++, the =;= operator).
+Haskell lets you do this.
 
 Haskell is also a functional programming language; which in this
 case means that it comes with quick and (relatively) painless
