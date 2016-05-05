@@ -1,0 +1,28 @@
+* Haskell Tutorial
+
+Haskell is a language full of embedded domain-specific languages. A
+"domain-specific language", or DSL, is a language specialized for a
+particular purpose, or "domain". The benefit of a DSL is that it can
+offer programming primitives directly relevant to the domain, while
+guarding users from foul domain behaviour.
+
+This document presents a couple embedded Haskell DSLs for the
+parsing and interpretation of simple regular, context-free, and
+context-sensitive languages.
+
+Not all programming langugages allow the "embedding" of other,
+domain-specific languages. This demands that the designer of a
+language library can define new, and override existing operators
+and control-flow structures.
+
+For instance, C++, C#, and Python, all allow advanced operator
+overloading, but none of them permit to modify the behaviour of
+sequencing program statements (the =;= operator).
+
+** Regular Expressions
+
+** Context-Free Grammars
+
+** Context-Sensitive Languages
+
+** Interpretation
