@@ -34,6 +34,8 @@ The principal target audience for this tutorial are [[http://www.diku.dk/][DIKU]
 coming to learn Haskell after having taken an undergraduate course
 on Compiler Implementation.
 
+* Abstract Syntax Trees
+
 * Regular Expressions
 
 * Context-Free Grammars
