@@ -32,7 +32,7 @@ interpreter).
 
 The principal target audience for this tutorial are [[http://www.diku.dk/][DIKU]] students,
 coming to learn Haskell after having taken an undergraduate course
-on Compiler Implementation.
+on Compiler Construction.
 
 * Abstract Syntax Trees
 
