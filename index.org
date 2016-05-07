@@ -98,7 +98,6 @@ the above module should be stored in a file called =Ast.hs=).
 | =?=   | ~option :: Parser a -> a -> Parser a~       |
 | =[]=  | ~choose :: [a] -> Parser a~                 |
 
-
 Before considering
 
 ** Modules and Directories
@@ -120,7 +119,6 @@ As to the parser itself, we can declare a new module which imports
 =Parser.Impl=, but hides all unnecessary functionality:
 
 #+INCLUDE: "./src/Parser.hs" src haskell
-
 
 * Context-Free Grammars
 
