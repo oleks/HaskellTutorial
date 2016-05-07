@@ -36,7 +36,83 @@ on Compiler Construction.
 
 * Abstract Syntax Trees
 
+Often, the input to a program is an unstructured stream of bytes. To do any
+useful work, we recast this stream of bytes into a more structured data
+type, an abstract syntax tree. In a conventional, multi-pass compiler this
+is the job of a lexer and/or parser.
+
+For instance, consider the strings "2+5*8" and "5*8+3". To evaluate such
+arithmetical expressions properly, we need to mind the rules of operator
+precedence. One possible abstract syntax tree for such arithmetical
+expressions can be defined as follows:
+
+#+INCLUDE: "./src/Ast.hs" src haskell :lines "3-"
+
+This defines a type constructor ~Expr~, with three data constructors:
+
+#+begin_src haskell
+Add :: Expr -> Expr -> Expr
+Mul :: Expr -> Expr -> Expr
+Num :: Integer -> Expr
+#+end_src
+
+This notation means that ~Add~ and ~Mul~ are functions that given two ~Expr~,
+yield an ~Expr~, and ~Num~ is a function that given an ~Integer~ yields an
+~Expr~.
+
+The above strings would then be represented as the ~Expr~ values
+~(Add (Num 2) (Mul (Num 5) (Num 8)))~ and
+~(Add (Mul (Num 5) (Num 8)) (Num 3))~.
+
+Here, evaluation order no longer is ambiguous, and we can walk the syntax
+tree to evaluate it:
+
+#+INCLUDE: "./src/Interp/Impl.hs" src haskell :lines "5-"
+
+** Files and Modules
+
+A Haskell file begins with a =module= declaration:
+
+#+INCLUDE: "./src/Ast.hs" src haskell :lines "1"
+
+The basename of the Haskell file name must be the name of the module (e.g.,
+the above module should be stored in a file called =Ast.hs=).
+
 * Regular Expressions
+
+| Regex | Haskell                                     |
+|-------+---------------------------------------------|
+| /x/   | ~char :: Char -> Parser Char~               |
+| /xyz/ | ~string :: String -> Parser String~         |
+| \vert | ~(+++) :: Parser a -> Parser a -> Parser a~ |
+| =*=   | ~many :: Parser a -> Parser [a]~            |
+| =+=   | ~many1 :: Parser a -> Parser (a, [a])~      |
+| =?=   | ~option :: Parser a -> a -> Parser a~       |
+| =[]=  | ~choose :: [a] -> Parser a~                 |
+
+
+Before considering
+
+** Modules and Directories
+
+Modules can be structured in directories. This allows you hide module internals,
+while permitting submodules with broad access rights. This in turn lets you write internal module tests, while exporting
+
+We can put the implementation of the parser in =Parser/Impl.hs=, exporting
+everything:
+
+#+INCLUDE: "./src/Parser/Impl.hs" src haskell :lines "1"
+
+This allows to write a comprehensive test module testing parser internals in
+=Parser/Test.hs=:
+
+#+INCLUDE: "./src/Parser/Test.hs" src haskell :lines "1"
+
+As to the parser itself, we can declare a new module which imports
+=Parser.Impl=, but hides all unnecessary functionality:
+
+#+INCLUDE: "./src/Parser.hs" src haskell
+
 
 * Context-Free Grammars
 
