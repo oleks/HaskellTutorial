@@ -9,7 +9,6 @@ cat | bash - <<EOF
 set -euo pipefail
 
 git merge master
-rm -f index.html
 emacs index.org --batch -f org-html-export-to-html --kill
 git add -f index.html
 git commit -S -m 'Deploy'
