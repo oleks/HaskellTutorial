@@ -66,7 +66,7 @@ The last line of the ~Expr~ declaration:
 
 Means that Haskell should employ some default behaviour when you attempt to
 print values of type ~Expr~. Without this line, the Haskell interpreter will
-complain that ~Expr~ is not an instance of ~Show~ and so cannot be "shown".
+complain that ~Expr~ is not an instance of ~Show~, and so cannot be "shown".
 
 The above strings would then be represented as the ~Expr~ values
 ~(Add (Num 2) (Mul (Num 5) (Num 8)))~ and
