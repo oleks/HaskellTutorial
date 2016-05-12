@@ -3,48 +3,48 @@
 * Introduction
 
 Haskell is a language full of embedded domain-specific languages. A
-"domain-specific language", or DSL, is a language specialized for a
-particular purpose, or "domain". The benefit of a DSL is that it can
-offer programming primitives directly relevant to the domain, while
-guarding users from foul domain behaviour.
+"domain-specific language", or DSL, is a language specialized for a particular
+purpose, or "domain". The benefit of a DSL is that it can offer programming
+primitives directly relevant to your domain, while guarding you from common
+domain pitfalls. Some languages come with libraries and frameworks, while
+others offer full-blown, embedded DSLs.
 
-This document presents a couple embedded Haskell DSLs for the
-parsing and interpretation of simple regular, context-free, and
-context-sensitive languages. The distinction between these language
-classes will be made clear along the way.
+This document presents a couple embedded Haskell DSLs for the parsing and
+interpretation of some regular, context-free, and context-sensitive languages.
+The distinction between these language classes will be made clear along the
+way. The DSLs presented are "embedded" in the sense that you always have the
+full power of Haskell at your fingertips.
 
 Not all programming langugages allow the "embedding" of domain-specific
 languages. This demands that the designer of a language library can
 define new, and override existing operators and control-flow structures.
 
-For instance, C++, C#, and Python, all allow advanced operator
-overloading, but none of them permit to modify the behaviour of
-sequencing program statements (in C# and C++, the =;= operator).
-Haskell lets you do this.
+For instance, C++, C#, and Python, all allow advanced operator overloading, but
+none of them let you to modify the behaviour of sequencing program statements
+(in C# and C++, the =;= operator).  Haskell lets you do this.
 
-Haskell is also a functional programming language; which in this
-case means that it comes with quick and (relatively) painless
-"glue code" for binding seemingly disparate domain-specific code,
-into one cohesive whole (e.g., binding the stages of a compiler or
-interpreter).
+Haskell is also a functional programming language; which in this case means
+that it comes with quick and (relatively) painless "glue code" for binding
+seemingly disparate domain-specific code, into one cohesive whole (e.g.,
+binding the stages of a compiler or interpreter).
 
 ** Audience
 
-The principal target audience for this tutorial are [[http://www.diku.dk/][DIKU]] students,
-coming to learn Haskell after having taken an undergraduate course
-on Compiler Construction.
+The principal target audience for this tutorial are
+[[http://www.diku.dk/][DIKU]] students, coming to learn Haskell after having
+taken an undergraduate course on Compiler Construction.
 
 * Abstract Syntax Trees
 
-Often, the input to a program is an unstructured stream of bytes. To do any
-useful work, we recast this stream of bytes into a more structured data
-type, an abstract syntax tree. In a conventional, multi-pass compiler this
-is the job of a lexer and/or parser.
+The input to a compiler or interpreter is an unstructured stream of bytes. To
+do any useful work, we recast this stream of bytes into a more structured data
+type, an abstract syntax tree. In a conventional, multi-pass compiler this is
+the job of a lexer and/or parser.
 
 For instance, consider the strings "2+5*8" and "5*8+3". To evaluate such
 arithmetical expressions properly, we need to mind the rules of operator
-precedence. One possible abstract syntax tree for such arithmetical
-expressions can be defined as follows:
+precedence. One possible abstract syntax tree for such arithmetical expressions
+can be defined as follows:
 
 #+INCLUDE: "./src/Ast.hs" src haskell :lines "3-"
 
@@ -68,12 +68,11 @@ Means that Haskell should employ some default behaviour when you attempt to
 print values of type ~Expr~. Without this line, the Haskell interpreter will
 complain that ~Expr~ is not an instance of ~Show~, and so cannot be "shown".
 
-The above strings would then be represented as the ~Expr~ values
-~(Add (Num 2) (Mul (Num 5) (Num 8)))~ and
-~(Add (Mul (Num 5) (Num 8)) (Num 3))~.
+The above strings would then be represented as the ~Expr~ values ~(Add (Num 2)
+(Mul (Num 5) (Num 8)))~ and ~(Add (Mul (Num 5) (Num 8)) (Num 3))~.
 
-Here, evaluation order no longer is ambiguous, and we can walk the syntax
-tree to evaluate it:
+Here, evaluation order no longer is ambiguous, and we can walk the syntax tree
+to evaluate it:
 
 #+INCLUDE: "./src/Interp/Impl.hs" src haskell :lines "5-"
 
@@ -85,6 +84,10 @@ A Haskell file begins with a =module= declaration:
 
 The basename of the Haskell file name must be the name of the module (e.g.,
 the above module should be stored in a file called =Ast.hs=).
+
+** Testing
+
+~ghci~
 
 * Regular Expressions
 
@@ -102,8 +105,9 @@ Before considering
 
 ** Modules and Directories
 
-Modules can be structured in directories. This allows you hide module internals,
-while permitting submodules with broad access rights. This in turn lets you write internal module tests, while exporting
+Modules can be structured in directories. This allows you hide module
+internals, while permitting submodules with broad access rights. This in turn
+lets you write internal module tests, while exporting
 
 We can put the implementation of the parser in =Parser/Impl.hs=, exporting
 everything:
@@ -119,6 +123,20 @@ As to the parser itself, we can declare a new module which imports
 =Parser.Impl=, but hides all unnecessary functionality:
 
 #+INCLUDE: "./src/Parser.hs" src haskell
+
+** Testing
+
+Shell scripts.
+
+#+BEGIN_SRC sh
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+ghci -v0 Parser.hs <<EOF
+
+EOF
+#+END_SRC
 
 * Context-Free Grammars
 
